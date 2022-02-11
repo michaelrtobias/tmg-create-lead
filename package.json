@@ -1,0 +1,28 @@
+{
+  "name": "tmg-create-lead",
+  "version": "1.0.0",
+  "description": "The Mundo Group Create Lead Lambda",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "zipper": "zip -r9 build/createLead.zip .",
+    "push-to-s3": "aws s3 sync --profile TMG_michael --acl private build/ s3://mundo-group-lambda-code/lambdas",
+    "push-to-s3-codebuild": "aws s3 sync --acl private build/ s3://mundo-group-lambda-code/lambdas",
+    "deploy": "npm run zipper && npm run push-to-s3",
+    "update-lambda": "aws --region us-east-1 lambda update-function-code --function-name create-lead --s3-bucket mundo-group-lambda-code --s3-key lambdas/createLead.zip --publish",
+    "update-lambda-local": "aws --region us-east-1 lambda update-function-code --profile TMG_michael --function-name create-lead --s3-bucket mundo-group-lambda-code --s3-key lambdas/createLead.zip --publish",
+    "local-deploy": "npm run deploy && npm run update-lambda-local"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michaelrtobias/tmg-create-lead.git"
+  },
+  "author": "michael tobias",
+  "bugs": {
+    "url": "https://github.com/michaelrtobias/tmg-create-lead/issues"
+  },
+  "homepage": "https://github.com/michaelrtobias/tmg-create-lead#readme",
+  "dependencies": {
+    "aws-sdk": "^2.1073.0"
+  }
+}
