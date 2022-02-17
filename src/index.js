@@ -14,7 +14,7 @@ exports.handler = function (event) {
       body: JSON.stringify(response),
     };
     console.log("response:", response);
-    return _response;
+    return response;
   } catch (e) {
     console.log(e);
     return {
