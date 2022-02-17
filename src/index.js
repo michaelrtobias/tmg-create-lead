@@ -1,5 +1,5 @@
 const AWS = require("aws-sdk");
-exports.handler = function (event) {
+exports.handler = async (event, context) => {
   try {
     console.log("event", event);
     let response = {
@@ -10,7 +10,7 @@ exports.handler = function (event) {
         "Access-Control-Allow-Headers": "Content-Type",
         "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PUT",
       },
-      body: JSON.stringify(event.body),
+      body: event.body,
     };
     console.log("response:", response);
     return response;
