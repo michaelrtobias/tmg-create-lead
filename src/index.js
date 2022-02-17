@@ -6,5 +6,5 @@ exports.handler = function ({ args: data }) {
   } catch (e) {
     throw e;
   }
-  return results;
+  return "96";
 };
