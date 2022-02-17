@@ -2,7 +2,6 @@ const AWS = require("aws-sdk");
 exports.handler = function (event) {
   try {
     console.log("event", event);
-    const result =
     let response = {
       statusCode: 200,
       headers: {
@@ -11,7 +10,7 @@ exports.handler = function (event) {
         "Access-Control-Allow-Headers": "Content-Type",
         "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PUT",
       },
-      body: "the body will go here",
+      body: JSON.stringify(event.body),
     };
     console.log("response:", response);
     return response;
