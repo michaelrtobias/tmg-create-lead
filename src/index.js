@@ -11,7 +11,7 @@ exports.handler = function (event) {
         "Access-Control-Allow-Headers": "Content-Type",
         "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PUT",
       },
-      body: JSON.stringify(event.body),
+      body: "the body will go here",
     };
     console.log("response:", response);
     return response;
