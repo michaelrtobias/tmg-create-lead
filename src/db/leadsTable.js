@@ -6,9 +6,7 @@ module.exports = async function (params, tableName) {
     apiVersion: "2012-08-10",
     region: "us-east-1",
   });
-  console.log("params before reassignment:", params);
   params["TableName"] = tableName;
-  console.log("params after reassignment:", params);
 
   const query = await ddb.putItem(params).promise();
   console.log("Lead Created");
