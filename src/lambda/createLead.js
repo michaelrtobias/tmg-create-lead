@@ -16,6 +16,7 @@ function getCurrentDate() {
 }
 
 module.exports = async function (body) {
+  console.log("first_name:", body.first_name);
   let params = {
     Item: {
       first_name: {
