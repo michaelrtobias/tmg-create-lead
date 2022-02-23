@@ -55,17 +55,9 @@ module.exports = async function (body) {
       },
     },
   };
-  try {
-    const result = await db.create(params, "leads");
-    console.log(result);
-    console.log("params", params);
-    return result;
-  } catch (e) {
-    if (e.expected) {
-      console.log(e.message);
-      throw e;
-    } else {
-      throw new Error("Intergalactic Space Ranger");
-    }
-  }
+
+  const result = await db.create(params, "leads");
+  console.log(result);
+  console.log("params", params);
+  return result;
 };
