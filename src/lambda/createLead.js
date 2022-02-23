@@ -1,5 +1,5 @@
 const createLeadDB = require("../db/leadsTable");
-
+const sendMessage = require("../sqs/sendMessage");
 function getCurrentDate() {
   const date = new Date();
   let dd = date.getDate();
@@ -16,7 +16,6 @@ function getCurrentDate() {
 }
 
 module.exports = async function (body) {
-  console.log("first_name:", body.first_name);
   let params = {
     Item: {
       first_name: {
@@ -58,5 +57,7 @@ module.exports = async function (body) {
   console.log("params", params);
   const result = await createLeadDB(params, "leads");
   console.log(result);
+  const queueResults = await sendMessage(body);
+  console.log("queue results:", queueResults);
   return result;
 };
