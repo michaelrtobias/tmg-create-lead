@@ -1,7 +1,11 @@
 const AWS = require("aws-sdk");
+const createLead = require("./lambda/createLead");
 exports.handler = async (event, context) => {
+  let { body } = event;
+  body = JSON.parse(body);
   try {
     console.log("event", event);
+    const results = await createLead(body);
     let response = {
       statusCode: 200,
       headers: {
@@ -10,7 +14,7 @@ exports.handler = async (event, context) => {
         "Access-Control-Allow-Headers": "Content-Type",
         "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PUT",
       },
-      body: event.body,
+      body: JSON.stringify(results),
     };
     console.log("response:", response);
     return response;
