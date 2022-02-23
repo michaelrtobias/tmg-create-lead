@@ -59,7 +59,7 @@ module.exports = async function (body) {
   console.log('params:', params)
   try {
     // const result = await db.create(params, "leads");
-    console.log(result);
+    // console.log(result);
     console.log("params", params);
     return result;
   } catch (e) {
