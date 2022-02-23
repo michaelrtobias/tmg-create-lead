@@ -53,8 +53,8 @@ module.exports = async function (body) {
       },
       timestamp: {
         S: new Date().toISOString(),
-      },
-    },
+      }
+    }
   };
   console.log('params:', params)
   try {
