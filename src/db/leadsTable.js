@@ -7,11 +7,7 @@ module.exports = async function (params, tableName) {
     region: "us-east-1",
   });
   params["TableName"] = tableName;
-
   const query = await ddb.putItem(params).promise();
-  console.log("Lead Created");
-
   const unmarshalledQuery = AWS.DynamoDB.Converter.unmarshall(query);
-  console.log("unmarshalledQuery:", unmarshalledQuery);
   return unmarshalledQuery;
 };

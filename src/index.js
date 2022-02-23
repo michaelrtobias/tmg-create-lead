@@ -1,8 +1,7 @@
 const createLead = require("./lambda/createLead");
 exports.handler = async (event) => {
   let { body } = event;
-  console.log(typeof body);
-  // body = JSON.parse(body);
+  body = typeof body === "string" ? JSON.parse(body) : body;
   try {
     const results = await createLead(body);
     let response = {

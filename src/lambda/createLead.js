@@ -58,6 +58,5 @@ module.exports = async function (body) {
   console.log("params", params);
   const result = await createLeadDB(params, "leads");
   console.log(result);
-  console.log("params", params);
   return result;
 };
