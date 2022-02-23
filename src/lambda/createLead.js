@@ -1,4 +1,4 @@
-const db = require("../db/leadsTable");
+const createLeadDB = require("../db/leadsTable");
 
 function getCurrentDate() {
   const date = new Date();
@@ -16,7 +16,6 @@ function getCurrentDate() {
 }
 
 module.exports = async function (body) {
-  console.log("create body:", body);
   let params = {
     Item: {
       first_name: {
@@ -56,7 +55,7 @@ module.exports = async function (body) {
     },
   };
 
-  const result = await db.create(params, "leads");
+  const result = await createLeadDB(params, "leads");
   console.log(result);
   console.log("params", params);
   return result;

@@ -1,9 +1,7 @@
 const createLead = require("./lambda/createLead");
 exports.handler = async (event) => {
   let { body } = event;
-  console.log("typeof:", typeof body);
   try {
-    console.log("event", event);
     const results = await createLead(body);
     let response = {
       statusCode: 200,

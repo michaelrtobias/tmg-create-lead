@@ -1,7 +1,7 @@
 const AWS = require("aws-sdk");
 AWS.config.update({ region: "us-east-1" });
 
-module.exports = async function create(params, tableName) {
+module.exports = async function (params, tableName) {
   const ddb = new AWS.DynamoDB({
     apiVersion: "2012-08-10",
     region: "us-east-1",
