@@ -1,7 +1,7 @@
-const AWS = require("aws-sdk");
-const db = require('../db/leadsTable')
+// const AWS = require("aws-sdk");
+// const db = require("../db/leadsTable");
 
-getCurrentDate() {
+function getCurrentDate() {
   const date = new Date();
   let dd = date.getDate();
   let mm = date.getMonth() + 1;
@@ -53,22 +53,21 @@ module.exports = async function (body) {
       },
       timestamp: {
         S: new Date().toISOString(),
-      }
-    }
+      },
+    },
   };
-  console.log('params:', params)
   try {
     // const result = await db.create(params, "leads");
     // console.log(result);
     console.log("params", params);
-    return result;
+    // return result;
   } catch (e) {
     if (e.expected) {
-      console.log(e.message)
+      console.log(e.message);
       throw e;
     } else {
       // throw new Error('Intergalactic Space Ranger')
-      throw e
+      throw e;
     }
   }
 };

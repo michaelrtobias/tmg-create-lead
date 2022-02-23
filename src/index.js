@@ -1,6 +1,5 @@
-const AWS = require("aws-sdk");
 const createLead = require("./lambda/createLead");
-exports.handler = async (event, context) => {
+exports.handler = async (event) => {
   let { body } = event;
   body = JSON.parse(body);
   try {
