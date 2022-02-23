@@ -1,4 +1,3 @@
-const dotenv = require("dotenv").config();
 const AWS = require("aws-sdk");
 const db = require('../db/leadsTable')
 
@@ -59,17 +58,17 @@ module.exports = async function (body) {
   };
   console.log('params:', params)
   try {
-    const result = await db.create(params, "leads");
+    // const result = await db.create(params, "leads");
     console.log(result);
     console.log("params", params);
     return result;
   } catch (e) {
-    console.log(e.message);
     if (e.expected) {
       console.log(e.message)
       throw e;
     } else {
-      throw new Error('Intergalactic Space Ranger')
+      // throw new Error('Intergalactic Space Ranger')
+      throw e
     }
   }
 };
