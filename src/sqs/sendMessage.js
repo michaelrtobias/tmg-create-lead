@@ -8,6 +8,7 @@ module.exports = async (body) => {
     MessageBody: JSON.stringify(body),
     QueueUrl: process.env.QUEUEURL,
   };
+  console.log("params before sqs call:", params);
   const results = await sqs.sendMessage(params).promise();
   console.log("sqs send message push results:", results);
   return results;
