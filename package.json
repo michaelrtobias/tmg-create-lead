@@ -11,7 +11,8 @@
     "deploy": "npm run zipper && npm run push-to-s3",
     "update-lambda": "aws --region us-east-1 lambda update-function-code --function-name create-lead --s3-bucket mundo-group-lambda-code --s3-key lambdas/createLead.zip --publish",
     "update-lambda-local": "aws --region us-east-1 lambda update-function-code --profile TMG_michael --function-name create-lead --s3-bucket mundo-group-lambda-code --s3-key lambdas/createLead.zip --publish",
-    "local-deploy": "npm run deploy && npm run update-lambda-local"
+    "local-deploy": "npm run deploy && npm run update-lambda-local",
+    "debug-invoke": "node --nolazy .debug/invoke.js"
   },
   "repository": {
     "type": "git",
