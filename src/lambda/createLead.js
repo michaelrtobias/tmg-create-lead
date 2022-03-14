@@ -59,5 +59,5 @@ module.exports = async function (body) {
   console.log(result);
   const queueResults = await sendMessage(body);
   console.log("queue results:", queueResults);
-  return result;
+  return { dbResult: result, queueResults: queueResults };
 };

@@ -106,3 +106,7 @@ dist
 build/createLead.zip
 
 .debug
+
+.DS_Store
+
+launch.json
