@@ -15,49 +15,36 @@ function getCurrentDate() {
   return today;
 }
 
-module.exports = async function (body) {
-  let params = {
-    Item: {
-      first_name: {
-        S: body.first_name,
-      },
+const formatParams = (body) => {
+  let params = {};
+  const keys = Object.keys(body);
+  keys.forEach((key) => {
+    params[key] = {
+      S: body[key],
+    };
+  });
 
-      last_name: {
-        S: body.last_name,
-      },
-      phone: {
-        S: body.phone,
-      },
-      email: {
-        S: body.email,
-      },
-      type: {
-        S: body.type,
-      },
-      make: {
-        S: body.make,
-      },
-      model: {
-        S: body.model,
-      },
-      description: {
-        S: body.description,
-      },
-      image_URL: {
-        S: body.image_URL,
-      },
-      created_date: {
-        S: getCurrentDate(),
-      },
-      timestamp: {
-        S: new Date().toISOString(),
-      },
+  params = {
+    ...params,
+    created_date: {
+      S: getCurrentDate(),
+    },
+    timestamp: {
+      S: new Date().toISOString(),
     },
   };
-  console.log("params", params);
+
+  return params;
+};
+
+module.exports = async function (body) {
+  let params = {
+    Item: formatParams(body),
+  };
   const result = await createLeadDB(params, "leads");
-  console.log(result);
+
   const queueResults = await sendMessage(body);
   console.log("queue results:", queueResults);
+
   return { dbResult: result, queueResults: queueResults };
 };

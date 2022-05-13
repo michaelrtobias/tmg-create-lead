@@ -110,3 +110,5 @@ build/createLead.zip
 .DS_Store
 
 launch.json
+
+build
